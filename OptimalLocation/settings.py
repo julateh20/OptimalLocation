@@ -14,6 +14,7 @@ from pathlib import Path
 
 import os
 import platform
+import pyutilib.subprocess.GlobalData
 
 OSGEO4W = r"C:\OSGeo4W"
 if '64' in platform.architecture()[0]:
@@ -24,10 +25,10 @@ os.environ['GDAL_DATA'] = OSGEO4W + r"\bin\gdal"
 os.environ['PROJ_LIB'] = OSGEO4W + r"\share\proj"
 os.environ['PATH'] = OSGEO4W + r"\bin;" + os.environ['PATH']
 
+pyutilib.subprocess.GlobalData.DEFINE_SIGNAL_HANDLERS_DEFAULT = False
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
-
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
@@ -40,7 +41,6 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
-
 # Application definition
 
 INSTALLED_APPS = [
@@ -51,8 +51,10 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.gis',
+    'crispy_forms',
     'OptLoc.apps.OptlocConfig',
 ]
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -89,12 +91,12 @@ WSGI_APPLICATION = 'OptimalLocation.wsgi.application'
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
 DATABASES = {
-'default': {
-    'ENGINE': 'django.contrib.gis.db.backends.postgis',
-    'NAME': 'geodjango',
-    'USER': 'postgres',
-    'PASSWORD': 'tilahun'
-}
+    'default': {
+        'ENGINE': 'django.contrib.gis.db.backends.postgis',
+        'NAME': 'geodjango',
+        'USER': 'postgres',
+        'PASSWORD': 'tilahun'
+    }
 }
 
 # Password validation
@@ -115,7 +117,6 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
 # Internationalization
 # https://docs.djangoproject.com/en/3.1/topics/i18n/
 
@@ -128,7 +129,6 @@ USE_I18N = True
 USE_L10N = True
 
 USE_TZ = True
-
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.1/howto/static-files/

@@ -18,5 +18,8 @@ from django.urls import path
 from OptLoc import views as view
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', view.index)
+    path('register', view.register_request, name='register'),
+    path('login', view.login_request, name='login'),
+    path('logout', view.logout_request, name='logout'),
+    path('', view.index, name='homepage')
 ]
