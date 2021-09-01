@@ -92,7 +92,7 @@ class OptimalLocationModel:
 #############################
 
 if __name__ == '__main__':
-    csv_path = 'C:\\OptimalLocation\\Dalarna.csv'
+    csv_path = 'C:\\Users\\Administrator\\Documents\\OptimalLocation\\Dalarna.csv'
     # Load the Pandas Dataframe of the Borlange Population grid
     df = pd.read_csv(csv_path, delimiter=',')
 
